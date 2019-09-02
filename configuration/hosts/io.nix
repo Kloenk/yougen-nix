@@ -19,22 +19,20 @@ in {
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x600300570190366024ffdf35240f5963";
 
   # f2fs support
   boot.supportedFilesystems = [ "ext4" "ext2" "nfs" "cifs" ];
 
   # taken from hardware-configuration.nix
   boot.initrd.availableKernelModules = [
-   #"aes_x86_64"
-   #"aesni_intel"
-   #"cryptd"
-   #"xhci_pci"
-   #"ehci_pci"
-   #"ahci"
-   #"usb_storage"
-   #"sd_mod"
-   #"sdhci_pci"
+   "ehci_pci"
+   "ahci"
+   "megaraid_sas"
+   "usb_storage"
+   "usbhid"
+   "sd_mod"
+   "sr_mod"
   ];
   boot.kernelModules = [ "kvm-intel" "acpi_call" ];
   boot.extraModulePackages = [
@@ -43,15 +41,15 @@ in {
   ];
 
   fileSystems."/" =
-    { device = "/dev/sda1";
+    { device = "/dev/disk/by-uuid/e9eb2837-0227-41a4-b70f-d87c34b737c6";
       fsType = "ext4";
     };
 
   swapDevices = [
-    { device = "/dev/sda2"; }
+    { device = "/dev/disk/by-label/nixos-swap"; }
   ];
 
-  nix.maxJobs = lib.mkDefault 4; #$change
+  nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   # enable autotune for linux with powertop (intel)
   #powerManagement.powertop.enable = true; # auto tune software
