@@ -2,7 +2,7 @@
 
 let
   secrets = import /etc/nixos/secrets.nix;
-  netFace = "eth0";
+  netFace = "enp2s0f0";
 in {
   imports = [
     ../../default.nix
