@@ -9,6 +9,7 @@ in {
     ../users.nix
     ../ssh.nix
     ../collectd.nix
+    ../services/mongodb.nix
 
     # fallback for detection
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
