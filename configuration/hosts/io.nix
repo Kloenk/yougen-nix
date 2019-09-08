@@ -6,7 +6,11 @@ let
 in {
   imports = [
     ../../default.nix
-    ../users.nix
+    (builtins.fetchGit {
+      url = "https://github.com/kloenk/nix.git";
+      rev = "99a16f578e5a68600fd23902ad9ee6699f77b3ce";
+    } + "/configuration/users.nix")
+    ../users/sarius.nix
     ../ssh.nix
     ../collectd.nix
     ../services/mongodb.nix
