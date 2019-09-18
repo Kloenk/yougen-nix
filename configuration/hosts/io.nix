@@ -45,7 +45,7 @@ in {
   ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e9eb2837-0227-41a4-b70f-d87c34b737c6";
+    { device = "/dev/disk/by-lable/nixos";
       fsType = "ext4";
     };
 
@@ -67,11 +67,14 @@ in {
     172.16.0.1 airlink.local unit.local
     10.0.0.1 lycus lycus.llg
   '';
-  networking.nameservers = [ "10.0.0.2" "8.8.8.8" ];
-  networking.dhcpcd.enable = false;
-  networking.useDHCP = false;
-  networking.interfaces."${netFace}".ipv4.addresses = [ { address = "10.0.0.4"; prefixLength = 8; } ];
-  networking.defaultGateway = { address = "10.1.0.1"; interface = netFace; };
+  networking.nameservers = [
+    #"10.0.0.2"
+    "8.8.8.8"
+  ];
+  networking.dhcpcd.enable = true;
+  networking.useDHCP = true;
+  #networking.interfaces."${netFace}".ipv4.addresses = [ { address = "10.0.0.4"; prefixLength = 8; } ];
+  #networking.defaultGateway = { address = "10.1.0.1"; interface = netFace; };
 
   services.vnstat.enable = true;
 
