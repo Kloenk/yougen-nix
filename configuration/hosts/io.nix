@@ -23,7 +23,7 @@ in {
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x600300570190366024ffdf35240f5963";
+  boot.loader.grub.device = "/dev/sda";
 
   # f2fs support
   boot.supportedFilesystems = [ "ext4" "ext2" "nfs" "cifs" ];
