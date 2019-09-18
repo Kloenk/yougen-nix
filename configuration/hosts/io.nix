@@ -125,7 +125,7 @@ in {
     "plugdev"  # allowes stlink connection
     "davfs2"   # webdav foo
     "docker"   # docker controll group
-    "libvirt"
+    "libvirtd" # virtmanager group
   ];
 
   # This value determines the NixOS release with which your system is to be
