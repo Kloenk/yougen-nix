@@ -13,7 +13,9 @@ in {
     ../users/sarius.nix
     ../ssh.nix
     ../collectd.nix
+
     ../services/mongodb.nix
+    ../services/gitea.nix
 
     # fallback for detection
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
